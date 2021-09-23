@@ -15,7 +15,7 @@ def create_app(test_config=None):
         app.config.from_pyfile('config.py', silent=True)
     else:
         # load the test config if passed in
-        app.config.frommapping(test_config)
+        app.config.update(test_config)
 
     # ensure the instance folder exists
     try:
@@ -26,7 +26,7 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/hello')
     def hello():
-        return 'Hello, World!!'
+        return 'Hello, World!'
 
     from . import db
     db.init_app(app)
